@@ -57,13 +57,15 @@ app.get('/',(req,res)=>{
 })
  
 
-
 // Create
 app.get('/fruits/new',(req,res)=>{
     res.render('create-fruit.ejs')
 })
 
  
+app.post('/fruits',(req,res)=>{
+    console.log(req.body)
+})
  
 
 
