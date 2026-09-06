@@ -3,7 +3,7 @@ const express = require("express") //importing express package
 const app = express() // creates a express application
 const dotenv = require("dotenv").config() //this allows me to use my .env values in this file
 const mongoose = require("mongoose")
-
+const Fruit = require('./models/Fruit')
 
 
 
@@ -56,7 +56,13 @@ app.get('/',(req,res)=>{
     res.render('homepage.ejs')
 })
  
- 
+
+
+// Create
+app.get('/fruits/new',(req,res)=>{
+    res.render('create-fruit.ejs')
+})
+
  
  
 
