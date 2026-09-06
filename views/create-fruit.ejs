@@ -8,12 +8,12 @@
 <body>
     <h1>Create new Fruit</h1>
 
-    <form>
-        <label for="">Name:</label>
-        <input name="name" type="text">
+    <form method="post" action="/fruits">
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text">
 
-        <label for="">Is Ready to Eat?</label>
-        <input name="isReadyToEat" type="text">
+        <label for="isReadyToEat">Is Ready to Eat?</label>
+        <input id="isReadyToEat" name="isReadyToEat" type="text">
         <button>Create Fruit</button>
     </form>
 </body>
