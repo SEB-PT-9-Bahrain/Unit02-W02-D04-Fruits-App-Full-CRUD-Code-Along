@@ -63,12 +63,25 @@ app.get('/fruits/new',(req,res)=>{
 })
 
  
-app.post('/fruits',(req,res)=>{
+app.post('/fruits', async (req,res)=>{
+    req.body.isReadyToEat = Boolean(req.body.isReadyToEat)
     console.log(req.body)
+    const createdFruit = await Fruit.create({
+        name: req.body.name,
+        isReadyToEat: req.body.isReadyToEat
+    })
+    res.redirect('/')
 })
  
+app.get('/fruits',(req,res)=>{
+    res.render('all-fruits.ejs')
+})
 
 
+// Exercise 2:
+// 1. Make an ejs page all-fruits.ejs and add h1 inside that says "All Fruits"
+// 2. create a get route on /fruits
+// 3. This route should render the all-fruits.ejs page
 
 
 app.listen(3000,()=>{
