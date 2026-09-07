@@ -21,7 +21,7 @@ app.use(printSayedHamed)
 app.use(express.static('public')); //all static files are in the public folder
 app.use(express.urlencoded({ extended: false })); // this will allow us to see the data being sent in the POST or PUT
 app.use(morgan('dev'))
-app.use(methodOverride('sayedhamed'))
+app.use(methodOverride('_method'))
 
 
 async function conntectToDB(){ //connection to the database
