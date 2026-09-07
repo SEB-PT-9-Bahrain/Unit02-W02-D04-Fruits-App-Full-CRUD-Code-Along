@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1>Update Fruit</h1>
+
+    <form>
+        <label for="name">Name:</label>
+        <input value="<%= fruit.name%>" id="name" name="name" type="text">
+
+        <label for="isReadyToEat">Is Ready to Eat?</label>
+        <input <% if(fruit.isReadyToEat){ %> checked <% } %> id="isReadyToEat" name="isReadyToEat" type="checkbox">
+        <button>Update Fruit</button>  
+    </form>
 </body>
 </html>
