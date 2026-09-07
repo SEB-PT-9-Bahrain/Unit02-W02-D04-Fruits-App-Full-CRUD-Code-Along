@@ -8,5 +8,11 @@
 <body>
     <%- include('./partials/navbar') %>
     <h1>All Fruits</h1>
+
+    <% for(let oneFruit of fruits){ %>
+        <p> <%= oneFruit.name %> </p>
+        <a href="/fruits/<%=oneFruit._id %>">Show Fruit Details</a>
+        
+    <% } %>
 </body>
 </html>

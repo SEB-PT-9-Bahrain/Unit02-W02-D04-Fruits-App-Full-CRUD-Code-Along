@@ -72,9 +72,17 @@ app.post('/fruits', async (req,res)=>{
     })
     res.redirect('/')
 })
+
+// READ
  
-app.get('/fruits',(req,res)=>{
-    res.render('all-fruits.ejs')
+app.get('/fruits',async(req,res)=>{
+    const allFruits = await Fruit.find()
+    res.render('all-fruits.ejs',{fruits: allFruits})
+})
+
+app.get('/fruits/:fruitId', async (req,res)=>{
+    const foundFruit = await Fruit.findById(req.params.fruitId)
+    res.render('fruit-details.ejs',{fruit: foundFruit})
 })
 
 
