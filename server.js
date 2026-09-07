@@ -85,6 +85,10 @@ app.get('/fruits/:fruitId', async (req,res)=>{
     res.render('fruit-details.ejs',{fruit: foundFruit})
 })
 
+app.post('/fruits/:fruitId/delete', async (req,res)=>{
+    const deletedFruit = await Fruit.findByIdAndDelete(req.params.fruitId)
+    res.redirect('/fruits')
+})
 
 // Exercise 2:
 // 1. Make an ejs page all-fruits.ejs and add h1 inside that says "All Fruits"
