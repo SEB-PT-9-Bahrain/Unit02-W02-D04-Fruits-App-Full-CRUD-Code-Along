@@ -12,7 +12,7 @@
     <p>Is Ready to eat: <%= fruit.isReadyToEat %></p>
     <p>id: <%= fruit._id %></p>
 
-    <form action="/fruits/<%= fruit._id %>/delete" method="post">
+    <form action="/fruits/<%= fruit._id %>?sayedhamed=DELETE" method="post">
         <button>Delete Fruit</button>
     </form>
 

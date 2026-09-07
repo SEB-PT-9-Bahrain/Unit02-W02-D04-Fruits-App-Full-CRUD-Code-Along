@@ -4,9 +4,15 @@ const app = express() // creates a express application
 const dotenv = require("dotenv").config() //this allows me to use my .env values in this file
 const mongoose = require("mongoose")
 const Fruit = require('./models/Fruit')
+const morgan = require('morgan')
+const methodOverride = require('method-override')
 
+function printSayedHamed(req,res,next){
+    console.log('Sayed Hamed')
+    next()
+}
 
-
+app.use(printSayedHamed)
 
 
 
@@ -14,8 +20,8 @@ const Fruit = require('./models/Fruit')
 // Middleware
 app.use(express.static('public')); //all static files are in the public folder
 app.use(express.urlencoded({ extended: false })); // this will allow us to see the data being sent in the POST or PUT
-
-
+app.use(morgan('dev'))
+app.use(methodOverride('sayedhamed'))
 
 
 async function conntectToDB(){ //connection to the database
@@ -85,7 +91,7 @@ app.get('/fruits/:fruitId', async (req,res)=>{
     res.render('fruit-details.ejs',{fruit: foundFruit})
 })
 
-app.post('/fruits/:fruitId/delete', async (req,res)=>{
+app.delete('/fruits/:fruitId', async (req,res)=>{
     const deletedFruit = await Fruit.findByIdAndDelete(req.params.fruitId)
     res.redirect('/fruits')
 })
@@ -99,7 +105,7 @@ app.get('/fruits/:fruitId/edit', async(req,res)=>{
     res.render('update-fruit.ejs',{fruit: foundFruit})
 })
 
-app.post('/fruits/:fruitId/edit', async (req,res)=>{
+app.put('/fruits/:fruitId', async (req,res)=>{
     req.body.isReadyToEat = Boolean(req.body.isReadyToEat)
     const updatedFruit = await Fruit.findByIdAndUpdate(req.params.fruitId,req.body)
     res.redirect('/fruits')
