@@ -90,6 +90,16 @@ app.post('/fruits/:fruitId/delete', async (req,res)=>{
     res.redirect('/fruits')
 })
 
+
+
+// Update routes
+
+app.get('/fruits/:fruitId/edit', async(req,res)=>{
+    const foundFruit = await Fruit.findById(req.params.fruitId)
+    res.render('update-fruit.ejs',{fruit: foundFruit})
+})
+
+
 // Exercise 2:
 // 1. Make an ejs page all-fruits.ejs and add h1 inside that says "All Fruits"
 // 2. create a get route on /fruits
