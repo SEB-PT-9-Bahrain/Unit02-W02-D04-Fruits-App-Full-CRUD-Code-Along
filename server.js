@@ -100,6 +100,7 @@ app.get('/fruits/:fruitId/edit', async(req,res)=>{
 })
 
 app.post('/fruits/:fruitId/edit', async (req,res)=>{
+    req.body.isReadyToEat = Boolean(req.body.isReadyToEat)
     const updatedFruit = await Fruit.findByIdAndUpdate(req.params.fruitId,req.body)
     res.redirect('/fruits')
 })
