@@ -99,6 +99,11 @@ app.get('/fruits/:fruitId/edit', async(req,res)=>{
     res.render('update-fruit.ejs',{fruit: foundFruit})
 })
 
+app.post('/fruits/:fruitId/edit', async (req,res)=>{
+    const updatedFruit = await Fruit.findByIdAndUpdate(req.params.fruitId,req.body)
+    res.redirect('/fruits')
+})
+
 
 // Exercise 2:
 // 1. Make an ejs page all-fruits.ejs and add h1 inside that says "All Fruits"
